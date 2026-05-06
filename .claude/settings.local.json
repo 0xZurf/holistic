@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(npx vite *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Lane W\\\\Documents\\\\playground\\\\holistic\" -Force)",
+      "Bash(Select-Object Name, PSIsContainer)",
+      "Bash(npm run *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Lane W\\\\Documents\\\\playground\\\\holistic\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Lane W\\\\Documents\\\\playground\\\\holistic\\\\src\\\\components\\\\admin\\\\\" -ErrorAction SilentlyContinue | ForEach-Object { $_.Name })",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}
