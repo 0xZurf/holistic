@@ -1,33 +1,15 @@
+import useApi from '../../hooks/useApi';
+import { getTestimonials } from '../../lib/api';
 import TestimonialCard from './TestimonialCard';
-
-const mockTestimonials = [
-  {
-    id: '1',
-    name: 'Sarah M.',
-    title: 'Yoga Instructor',
-    body: 'The nutritional consulting completely transformed my relationship with food. I feel more energized and balanced than ever before.',
-    image_url: null,
-    rating: 5,
-  },
-  {
-    id: '2',
-    name: 'James K.',
-    title: null,
-    body: 'The Desert Renewal Retreat was a life-changing experience. I came home with a renewed sense of purpose and clarity.',
-    image_url: null,
-    rating: 5,
-  },
-  {
-    id: '3',
-    name: 'Elena R.',
-    title: 'Wellness Coach',
-    body: 'I recommend the adaptogen blend to all my clients. The quality is exceptional and the results speak for themselves.',
-    image_url: null,
-    rating: 4,
-  },
-];
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 export default function Testimonials() {
+  const { data, loading } = useApi(() => getTestimonials(true));
+  const testimonials = data || [];
+
+  if (loading) return <LoadingSpinner className="py-12" />;
+  if (!testimonials.length) return null;
+
   return (
     <section className="section-padding bg-sand">
       <div className="container-main">
@@ -39,7 +21,7 @@ export default function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          {mockTestimonials.map((t) => (
+          {testimonials.map((t) => (
             <TestimonialCard key={t.id} testimonial={t} />
           ))}
         </div>

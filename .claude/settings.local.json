@@ -20,7 +20,9 @@
       "mcp__claude_ai_Vercel__deploy_to_vercel",
       "Bash(git commit *)",
       "Bash(npx vercel *)",
-      "mcp__claude_ai_Vercel__list_teams"
+      "mcp__claude_ai_Vercel__list_teams",
+      "Bash(git push *)",
+      "Bash(node *)"
     ]
   }
 }

@@ -1,20 +1,17 @@
+import useApi from '../../hooks/useApi';
+import { getRetreats } from '../../lib/api';
 import Button from '../ui/Button';
 import Badge from '../ui/Badge';
+import LoadingSpinner from '../ui/LoadingSpinner';
 import { formatDateRange, formatPrice } from '../../lib/formatters';
 
-const nextRetreat = {
-  slug: 'desert-renewal',
-  title: 'Desert Renewal Retreat',
-  description: 'A transformative 3-day journey of self-discovery amidst the healing energy of the desert landscape.',
-  image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop',
-  location: 'Sedona, AZ',
-  start_date: '2026-07-15',
-  end_date: '2026-07-18',
-  price: 125000,
-  spots_remaining: 5,
-};
-
 export default function RetreatSpotlight() {
+  const { data, loading } = useApi(getRetreats);
+  const nextRetreat = (data || [])[0];
+
+  if (loading) return <LoadingSpinner className="py-12" />;
+  if (!nextRetreat) return null;
+
   return (
     <section className="section-padding bg-sand">
       <div className="container-main">
@@ -28,7 +25,7 @@ export default function RetreatSpotlight() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-white rounded-2xl shadow-lg overflow-hidden">
           <div className="h-64 sm:h-80 lg:h-full">
             <img
-              src={nextRetreat.image}
+              src={nextRetreat.image_url}
               alt={nextRetreat.title}
               className="w-full h-full object-cover"
             />

@@ -17,8 +17,9 @@ async function seed() {
   }
 
   const hash = await bcrypt.hash(password, 12);
+  await client.execute({ sql: `DELETE FROM admin_users`, args: [] });
   await client.execute({
-    sql: `INSERT OR IGNORE INTO admin_users (id, email, password_hash, created_at) VALUES (?, ?, ?, ?)`,
+    sql: `INSERT INTO admin_users (id, email, password_hash, created_at) VALUES (?, ?, ?, ?)`,
     args: [ulid(), email, hash, now],
   });
   console.log('Admin user seeded.');
