@@ -1,6 +1,20 @@
 {
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/api/services/:slug", "destination": "/api/services?slug=:slug" },
+    { "source": "/api/retreats/:slug", "destination": "/api/retreats?slug=:slug" },
+    { "source": "/api/products/:slug", "destination": "/api/products?slug=:slug" },
+    { "source": "/api/testimonials", "destination": "/api/public?resource=testimonials" },
+    { "source": "/api/settings", "destination": "/api/public?resource=settings" },
+    { "source": "/api/contact", "destination": "/api/public?resource=contact" },
+    { "source": "/api/admin/login", "destination": "/api/admin/auth?action=login" },
+    { "source": "/api/admin/logout", "destination": "/api/admin/auth?action=logout" },
+    { "source": "/api/admin/settings", "destination": "/api/admin/manage?action=settings" },
+    { "source": "/api/admin/upload", "destination": "/api/admin/manage?action=upload" },
+    { "source": "/api/admin/services/:id", "destination": "/api/admin/services?id=:id" },
+    { "source": "/api/admin/retreats/:id", "destination": "/api/admin/retreats?id=:id" },
+    { "source": "/api/admin/products/:id", "destination": "/api/admin/products?id=:id" },
+    { "source": "/api/admin/orders/:id", "destination": "/api/admin/orders?id=:id" },
+    { "source": "/api/admin/testimonials/:id", "destination": "/api/admin/testimonials?id=:id" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
