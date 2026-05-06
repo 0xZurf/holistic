@@ -1,4 +1,4 @@
-export const SITE_NAME = 'Holistic';
+export const SITE_NAME = 'Solis Imperium';
 export const SITE_TAGLINE = 'Nurturing Mind, Body & Spirit';
 
 export const SERVICE_CATEGORIES = [

@@ -16,7 +16,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link to="/" className="font-display text-2xl font-semibold text-cream">
-              Holistic
+              Solis Imperium
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-cream/60">
               Nurturing mind, body, and spirit through holistic wellness practices.
@@ -60,7 +60,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-cream/10 mt-12 pt-8 text-center text-sm text-cream/40">
-          &copy; {new Date().getFullYear()} Holistic Wellness. All rights reserved.
+          &copy; {new Date().getFullYear()} Solis Imperium. All rights reserved.
         </div>
       </div>
     </footer>

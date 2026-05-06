@@ -40,7 +40,7 @@ export default function Login() {
     <div className="min-h-screen bg-cream flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-lg border border-sand max-w-sm w-full p-8">
         <div className="text-center mb-8">
-          <h1 className="font-display text-2xl font-bold text-earth">Holistic</h1>
+          <h1 className="font-display text-2xl font-bold text-earth">Solis Imperium</h1>
           <p className="text-sm text-charcoal/50 mt-1">Admin Portal</p>
         </div>
 

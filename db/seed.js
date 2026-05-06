@@ -25,7 +25,7 @@ async function seed() {
   console.log('Admin user seeded.');
 
   const settings = [
-    ['brand_name', 'Holistic'],
+    ['brand_name', 'Solis Imperium'],
     ['tagline', 'Nurturing Mind, Body & Spirit'],
     ['contact_email', 'info@example.com'],
     ['phone', ''],

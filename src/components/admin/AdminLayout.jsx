@@ -43,7 +43,7 @@ export default function AdminLayout() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
           </button>
-          <h1 className="font-display text-lg font-bold text-earth">Holistic Admin</h1>
+          <h1 className="font-display text-lg font-bold text-earth">Solis Imperium Admin</h1>
         </header>
         <main className="flex-1 p-6 lg:p-8 overflow-y-auto">
           <Outlet />

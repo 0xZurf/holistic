@@ -32,7 +32,7 @@ export default function AdminSidebar({ open, onClose }) {
         }`}
       >
         <div className="p-6 border-b border-sand">
-          <h1 className="font-display text-xl font-bold text-earth">Holistic</h1>
+          <h1 className="font-display text-xl font-bold text-earth">Solis Imperium</h1>
           <p className="text-xs text-charcoal/40 mt-0.5">Admin Portal</p>
         </div>
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">

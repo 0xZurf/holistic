@@ -18,7 +18,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-sand">
       <div className="container-main flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16 sm:h-20">
         <Link to="/" className="font-display text-2xl sm:text-3xl font-semibold text-earth tracking-wide">
-          Holistic
+          Solis Imperium
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
