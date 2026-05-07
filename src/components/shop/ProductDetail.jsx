@@ -3,6 +3,7 @@ import Button from '../ui/Button';
 import ProductGallery from './ProductGallery';
 import useCart from '../../hooks/useCart';
 import { formatPrice } from '../../lib/formatters';
+import { triggerCartToast } from '../ui/CartToast';
 
 export default function ProductDetail({ product }) {
   const { addItem } = useCart();
@@ -15,6 +16,7 @@ export default function ProductDetail({ product }) {
       price: product.price,
       image_url: product.image_url,
     });
+    triggerCartToast(product.title);
   }
 
   return (
