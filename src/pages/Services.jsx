@@ -3,7 +3,8 @@ import useApi from '../hooks/useApi';
 import { getServices } from '../lib/api';
 import ServiceCard from '../components/services/ServiceCard';
 import Badge from '../components/ui/Badge';
-import LoadingSpinner from '../components/ui/LoadingSpinner';
+import FadeIn from '../components/ui/FadeIn';
+import { CardGridSkeleton } from '../components/ui/Skeleton';
 import { SERVICE_CATEGORIES } from '../lib/constants';
 
 export default function Services() {
@@ -18,33 +19,37 @@ export default function Services() {
   return (
     <div className="section-padding">
       <div className="container-main">
-        <div className="text-center mb-12">
-          <p className="font-accent text-sage text-lg mb-2">What We Offer</p>
-          <h1 className="font-display text-4xl sm:text-5xl font-semibold text-charcoal">
-            Our Services
-          </h1>
-        </div>
+        <FadeIn>
+          <div className="text-center mb-12">
+            <p className="font-accent text-sage text-lg mb-2">What We Offer</p>
+            <h1 className="font-display text-4xl sm:text-5xl font-semibold text-charcoal">
+              Our Services
+            </h1>
+          </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {SERVICE_CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className="min-h-[44px] px-4"
-            >
-              <Badge variant={activeCategory === cat ? 'sage' : 'charcoal'}>
-                {cat}
-              </Badge>
-            </button>
-          ))}
-        </div>
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {SERVICE_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className="min-h-[44px] px-4"
+              >
+                <Badge variant={activeCategory === cat ? 'sage' : 'charcoal'}>
+                  {cat}
+                </Badge>
+              </button>
+            ))}
+          </div>
+        </FadeIn>
 
         {loading ? (
-          <LoadingSpinner className="py-12" />
+          <CardGridSkeleton count={6} imageClass="h-48 sm:h-56" />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filtered.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+            {filtered.map((service, i) => (
+              <FadeIn key={service.id} delay={i * 80}>
+                <ServiceCard service={service} />
+              </FadeIn>
             ))}
           </div>
         )}

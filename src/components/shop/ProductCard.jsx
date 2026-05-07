@@ -3,10 +3,11 @@ import Card from '../ui/Card';
 import Button from '../ui/Button';
 import useCart from '../../hooks/useCart';
 import { formatPrice } from '../../lib/formatters';
-import { triggerCartToast } from '../ui/CartToast';
+import { useCartToast } from '../ui/CartToast';
 
 export default function ProductCard({ product }) {
   const { addItem } = useCart();
+  const cartToast = useCartToast();
 
   function handleAdd(e) {
     e.preventDefault();
@@ -16,7 +17,7 @@ export default function ProductCard({ product }) {
       price: product.price,
       image_url: product.image_url,
     });
-    triggerCartToast(product.title);
+    cartToast(product.title);
   }
 
   return (

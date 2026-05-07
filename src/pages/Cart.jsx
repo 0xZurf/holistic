@@ -4,20 +4,20 @@ import CartItem from '../components/shop/CartItem';
 import useCart from '../hooks/useCart';
 import { formatPrice } from '../lib/formatters';
 import { createCheckoutSession } from '../lib/api';
+import { useToast } from '../components/ui/Toast';
 
 export default function Cart() {
   const { items, total } = useCart();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const addToast = useToast();
 
   async function handleCheckout() {
     setLoading(true);
-    setError(null);
     try {
       const { url } = await createCheckoutSession(items);
       window.location.href = url;
     } catch (err) {
-      setError(err.message);
+      addToast(err.message || 'Checkout failed. Please try again.', 'error');
       setLoading(false);
     }
   }
@@ -52,10 +52,6 @@ export default function Cart() {
               {formatPrice(total)}
             </span>
           </div>
-
-          {error && (
-            <p className="text-red-600 text-sm mb-4">{error}</p>
-          )}
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button to="/shop" variant="outline" className="flex-1">
