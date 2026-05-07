@@ -15,6 +15,8 @@
     { "source": "/api/admin/products/:id", "destination": "/api/admin/products?id=:id" },
     { "source": "/api/admin/orders/:id", "destination": "/api/admin/orders?id=:id" },
     { "source": "/api/admin/testimonials/:id", "destination": "/api/admin/testimonials?id=:id" },
+    { "source": "/api/checkout", "destination": "/api/public?resource=checkout" },
+    { "source": "/api/webhooks/stripe", "destination": "/api/public?resource=webhook" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

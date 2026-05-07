@@ -1,6 +1,14 @@
+import { useEffect } from 'react';
 import Button from '../components/ui/Button';
+import useCart from '../hooks/useCart';
 
 export default function CheckoutSuccess() {
+  const { clearCart } = useCart();
+
+  useEffect(() => {
+    clearCart();
+  }, []);
+
   return (
     <div className="section-padding text-center">
       <div className="container-main max-w-2xl">

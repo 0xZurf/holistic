@@ -1,10 +1,26 @@
+import { useState } from 'react';
 import Button from '../components/ui/Button';
 import CartItem from '../components/shop/CartItem';
 import useCart from '../hooks/useCart';
 import { formatPrice } from '../lib/formatters';
+import { createCheckoutSession } from '../lib/api';
 
 export default function Cart() {
   const { items, total } = useCart();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  async function handleCheckout() {
+    setLoading(true);
+    setError(null);
+    try {
+      const { url } = await createCheckoutSession(items);
+      window.location.href = url;
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
+    }
+  }
 
   if (items.length === 0) {
     return (
@@ -37,12 +53,21 @@ export default function Cart() {
             </span>
           </div>
 
+          {error && (
+            <p className="text-red-600 text-sm mb-4">{error}</p>
+          )}
+
           <div className="flex flex-col sm:flex-row gap-4">
             <Button to="/shop" variant="outline" className="flex-1">
               Continue Shopping
             </Button>
-            <Button variant="gold" className="flex-1">
-              Proceed to Checkout
+            <Button
+              variant="gold"
+              className="flex-1"
+              onClick={handleCheckout}
+              disabled={loading}
+            >
+              {loading ? 'Redirecting...' : 'Proceed to Checkout'}
             </Button>
           </div>
         </div>

@@ -22,7 +22,7 @@ export default function Button({
   className = '',
   ...props
 }) {
-  const classes = `inline-flex items-center justify-center font-medium rounded-xl tracking-wide uppercase transition-all duration-200 ${variants[variant]} ${sizes[size]} ${className}`;
+  const classes = `inline-flex items-center justify-center font-medium rounded-xl tracking-wide uppercase transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (to) {
     return (
