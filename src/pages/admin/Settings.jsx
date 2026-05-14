@@ -27,7 +27,9 @@ export default function Settings() {
       const settings = data.settings || data;
       const map = {};
       if (Array.isArray(settings)) {
-        settings.forEach((s) => { map[s.key] = s.value; });
+        settings.forEach((s) => {
+          map[s.key] = s.value;
+        });
       } else {
         Object.assign(map, settings);
       }
@@ -60,18 +62,26 @@ export default function Settings() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-2xl font-bold text-charcoal">Settings</h1>
-        <p className="text-sm text-charcoal/50 mt-1">Manage your site configuration</p>
+        <span className="font-accent uppercase tracking-[0.3em] text-[11px] text-gold-dim">
+          Configuration
+        </span>
+        <h1
+          className="font-display font-light text-cream m-0"
+          style={{ fontSize: 'clamp(28px, 3.5vw, 40px)', marginTop: 6, letterSpacing: '-0.01em' }}
+        >
+          Settings
+        </h1>
+        <p className="font-body text-sm text-warm-gray mt-1">Manage your site configuration</p>
       </div>
 
       <form onSubmit={handleSubmit} className="max-w-2xl space-y-4">
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+          <div className="bg-card-dark border border-red-500/40 text-red-300 rounded-sm px-4 py-3 font-body text-sm">
             {error}
           </div>
         )}
         {success && (
-          <div className="bg-sage/10 border border-sage/20 text-sage rounded-xl px-4 py-3 text-sm">
+          <div className="bg-card-dark border border-gold-border text-gold rounded-sm px-4 py-3 font-body text-sm">
             Settings saved successfully.
           </div>
         )}
@@ -86,7 +96,7 @@ export default function Settings() {
           />
         ))}
 
-        <div className="pt-4 border-t border-sand">
+        <div className="pt-4 border-t border-card-border">
           <Button type="submit" disabled={saving}>
             {saving ? 'Saving...' : 'Save Settings'}
           </Button>

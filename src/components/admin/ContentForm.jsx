@@ -33,7 +33,10 @@ export default function ContentForm({ type, initialData, onSubmit, loading }) {
       setForm({
         ...initialData,
         price: initialData.price != null ? (initialData.price / 100).toFixed(2) : '',
-        compare_at_price: initialData.compare_at_price != null ? (initialData.compare_at_price / 100).toFixed(2) : '',
+        compare_at_price:
+          initialData.compare_at_price != null
+            ? (initialData.compare_at_price / 100).toFixed(2)
+            : '',
       });
     }
   }, [initialData]);
@@ -83,7 +86,7 @@ export default function ContentForm({ type, initialData, onSubmit, loading }) {
   return (
     <form onSubmit={handleSubmit} className="max-w-3xl space-y-6">
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+        <div className="bg-card-dark border border-red-500/40 text-red-300 rounded-sm px-4 py-3 font-body text-sm">
           {error}
         </div>
       )}
@@ -98,7 +101,10 @@ export default function ContentForm({ type, initialData, onSubmit, loading }) {
         <Input
           label="Slug"
           value={form.slug}
-          onChange={(e) => { setAutoSlug(false); set('slug', e.target.value); }}
+          onChange={(e) => {
+            setAutoSlug(false);
+            set('slug', e.target.value);
+          }}
           required
         />
       </div>
@@ -256,14 +262,14 @@ export default function ContentForm({ type, initialData, onSubmit, loading }) {
               type="checkbox"
               checked={!!form.is_active}
               onChange={(e) => set('is_active', e.target.checked ? 1 : 0)}
-              className="w-5 h-5 rounded border-sand text-sage focus:ring-sage/30"
+              className="w-5 h-5 rounded-sm accent-gold border border-card-border bg-card-dark"
             />
-            <span className="text-sm font-medium text-charcoal/70">Active (visible on site)</span>
+            <span className="font-body text-sm text-sand">Active (visible on site)</span>
           </label>
         </div>
       </div>
 
-      <div className="flex items-center gap-3 pt-4 border-t border-sand">
+      <div className="flex items-center gap-3 pt-4 border-t border-card-border">
         <Button type="submit" disabled={saving}>
           {saving ? 'Saving...' : isEdit ? 'Update' : 'Create'}
         </Button>
@@ -280,7 +286,14 @@ function getTypeDefaults(type) {
     case 'services':
       return { category: '', duration: '', price_label: '' };
     case 'retreats':
-      return { location: '', start_date: '', end_date: '', capacity: 0, spots_remaining: 0, gallery: '[]' };
+      return {
+        location: '',
+        start_date: '',
+        end_date: '',
+        capacity: 0,
+        spots_remaining: 0,
+        gallery: '[]',
+      };
     case 'products':
       return { category: '', inventory_count: 0, compare_at_price: '', gallery: '[]' };
     default:

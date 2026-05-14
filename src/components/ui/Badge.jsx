@@ -1,15 +1,18 @@
 const variants = {
-  sage: 'bg-sage/10 text-sage',
-  earth: 'bg-earth/10 text-earth',
-  clay: 'bg-clay/10 text-clay',
-  gold: 'bg-gold/10 text-gold',
-  charcoal: 'bg-charcoal/10 text-charcoal',
+  gold: 'text-gold border-gold-border',
+  sage: 'text-gold border-gold-border',
+  earth: 'text-gold border-gold-border',
+  clay: 'text-gold border-gold-border',
+  charcoal: 'text-sand border-card-border',
+  muted: 'text-warm-gray border-card-border',
 };
 
-export default function Badge({ children, variant = 'sage', className = '' }) {
+export default function Badge({ children, variant = 'gold', className = '' }) {
   return (
     <span
-      className={`inline-block px-3 py-1 text-xs font-medium uppercase tracking-wider rounded-full ${variants[variant]} ${className}`}
+      className={`inline-block font-accent uppercase tracking-[0.15em] text-[10px] sm:text-[11px] px-3 py-1 border rounded-sm ${
+        variants[variant] || variants.gold
+      } ${className}`}
     >
       {children}
     </span>

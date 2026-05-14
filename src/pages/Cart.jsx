@@ -24,10 +24,18 @@ export default function Cart() {
 
   if (items.length === 0) {
     return (
-      <div className="section-padding text-center">
-        <div className="container-main max-w-2xl">
-          <h1 className="font-display text-4xl font-semibold text-charcoal mb-4">Your Cart</h1>
-          <p className="text-charcoal/60 mb-8">Your cart is empty.</p>
+      <div
+        className="bg-dark-bg text-center"
+        style={{ padding: '80px clamp(16px, 4vw, 48px)' }}
+      >
+        <div className="max-w-[640px] mx-auto">
+          <h1
+            className="font-display font-light text-cream m-0 mb-4"
+            style={{ fontSize: 'clamp(32px, 4.5vw, 52px)', letterSpacing: '-0.01em' }}
+          >
+            Your <span className="text-gold">Cart</span>
+          </h1>
+          <p className="font-body text-warm-gray mb-8">Your cart is empty.</p>
           <Button to="/shop">Continue Shopping</Button>
         </div>
       </div>
@@ -35,9 +43,14 @@ export default function Cart() {
   }
 
   return (
-    <div className="section-padding">
-      <div className="container-main max-w-3xl">
-        <h1 className="font-display text-4xl font-semibold text-charcoal mb-8">Your Cart</h1>
+    <div className="bg-dark-bg" style={{ padding: '80px clamp(16px, 4vw, 48px)' }}>
+      <div className="max-w-[800px] mx-auto">
+        <h1
+          className="font-display font-light text-cream m-0 mb-10"
+          style={{ fontSize: 'clamp(32px, 4.5vw, 52px)', letterSpacing: '-0.01em' }}
+        >
+          Your <span className="text-gold">Cart</span>
+        </h1>
 
         <div className="space-y-4">
           {items.map((item) => (
@@ -45,20 +58,20 @@ export default function Cart() {
           ))}
         </div>
 
-        <div className="mt-8 border-t border-sand pt-6">
+        <div className="mt-10 border-t border-card-border pt-6">
           <div className="flex items-center justify-between mb-6">
-            <span className="font-display text-xl text-charcoal">Total</span>
-            <span className="font-display text-2xl font-semibold text-charcoal">
+            <span className="font-display font-light text-cream text-xl">Total</span>
+            <span className="font-display text-gold text-2xl">
               {formatPrice(total)}
             </span>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button to="/shop" variant="outline" className="flex-1">
+            <Button to="/shop" variant="secondary" className="flex-1">
               Continue Shopping
             </Button>
             <Button
-              variant="gold"
+              variant="primary"
               className="flex-1"
               onClick={handleCheckout}
               disabled={loading}

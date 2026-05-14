@@ -44,28 +44,35 @@ export default function OrderPage() {
   }
 
   if (loading) return <LoadingSpinner className="py-12" />;
-  if (!order) return <p className="text-charcoal/50">Order not found.</p>;
+  if (!order)
+    return <p className="font-body text-warm-gray">Order not found.</p>;
 
   return (
     <div className="space-y-8 max-w-3xl">
       <div className="flex items-center gap-4">
         <button
           onClick={() => navigate('/admin/orders')}
-          className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-sand/50 rounded-lg transition-colors"
+          className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-sand hover:text-gold rounded-sm transition-colors"
+          aria-label="Back to orders"
         >
-          <svg className="w-5 h-5 text-charcoal/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
         </button>
-        <h1 className="font-display text-2xl font-bold text-charcoal">Order Details</h1>
+        <h1
+          className="font-display font-light text-cream m-0"
+          style={{ fontSize: 'clamp(24px, 3vw, 32px)', letterSpacing: '-0.01em' }}
+        >
+          Order <span className="text-gold">Details</span>
+        </h1>
       </div>
 
-      <div className="bg-white rounded-2xl border border-sand p-6">
+      <div className="bg-card-dark border border-card-border rounded p-6">
         <OrderDetailComponent order={order} />
       </div>
 
-      <div className="bg-white rounded-2xl border border-sand p-6">
-        <h2 className="font-display text-lg font-semibold text-charcoal mb-4">Update Order</h2>
+      <div className="bg-card-dark border border-card-border rounded p-6">
+        <h2 className="font-display font-light text-cream text-lg mb-5">Update Order</h2>
         <form onSubmit={handleUpdate} className="space-y-4">
           <Select
             label="Status"

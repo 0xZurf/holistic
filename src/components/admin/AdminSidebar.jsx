@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import SolisLogo from '../ui/SolisLogo';
 import useAuth from '../../hooks/useAuth';
 
 const links = [
@@ -15,42 +16,73 @@ export default function AdminSidebar({ open, onClose }) {
   const { logout } = useAuth();
 
   const linkClass = ({ isActive }) =>
-    `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-colors min-h-[44px] ${
+    `flex items-center gap-3 px-4 py-3 rounded-sm font-accent uppercase tracking-[0.15em] text-[12px] transition-colors min-h-[44px] border ${
       isActive
-        ? 'bg-sage/10 text-sage'
-        : 'text-charcoal/60 hover:bg-sand/50 hover:text-charcoal'
+        ? 'text-gold border-gold-border bg-gold/[0.06]'
+        : 'text-sand border-transparent hover:text-gold hover:border-gold-border'
     }`;
 
   return (
     <>
       {open && (
-        <div className="fixed inset-0 bg-charcoal/30 z-40 lg:hidden" onClick={onClose} />
+        <div
+          className="fixed inset-0 z-40 lg:hidden"
+          style={{ background: 'rgba(10,10,10,0.78)', backdropFilter: 'blur(4px)' }}
+          onClick={onClose}
+        />
       )}
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-64 bg-white border-r border-sand flex flex-col transition-transform duration-200 lg:translate-x-0 lg:static lg:z-auto ${
+        className={`fixed top-0 left-0 z-50 h-full w-64 bg-obsidian border-r border-card-border flex flex-col transition-transform duration-200 lg:translate-x-0 lg:static lg:z-auto ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="p-6 border-b border-sand">
-          <h1 className="font-display text-xl font-bold text-earth">Solis Imperium</h1>
-          <p className="text-xs text-charcoal/40 mt-0.5">Admin Portal</p>
+        <div className="p-6 border-b border-card-border">
+          <div className="flex items-center gap-3">
+            <SolisLogo size={32} />
+            <div>
+              <h1 className="font-accent uppercase tracking-[0.2em] text-[12px] text-gold m-0">
+                Solis Imperium
+              </h1>
+              <p className="font-body text-[10px] uppercase tracking-[0.2em] text-warm-gray mt-0.5">
+                Admin Portal
+              </p>
+            </div>
+          </div>
         </div>
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           {links.map((link) => (
-            <NavLink key={link.to} to={link.to} end={link.to === '/admin'} className={linkClass} onClick={onClose}>
-              <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.to === '/admin'}
+              className={linkClass}
+              onClick={onClose}
+            >
+              <svg
+                className="w-5 h-5 flex-shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.3}
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" d={link.icon} />
               </svg>
               {link.label}
             </NavLink>
           ))}
         </nav>
-        <div className="p-4 border-t border-sand">
+        <div className="p-4 border-t border-card-border">
           <button
             onClick={logout}
-            className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-medium text-charcoal/60 hover:bg-red-50 hover:text-red-600 transition-colors min-h-[44px]"
+            className="flex items-center gap-3 w-full px-4 py-3 rounded-sm font-accent uppercase tracking-[0.15em] text-[12px] text-sand hover:text-gold border border-transparent hover:border-gold-border transition-colors min-h-[44px]"
           >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.3}
+            >
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
             </svg>
             Sign Out

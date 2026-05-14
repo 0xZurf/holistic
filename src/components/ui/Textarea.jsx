@@ -4,19 +4,19 @@ const Textarea = forwardRef(function Textarea({ label, error, className = '', ro
   return (
     <div className={className}>
       {label && (
-        <label className="block text-sm font-medium text-charcoal/70 mb-1.5">
+        <label className="block font-accent uppercase tracking-[0.15em] text-[11px] text-gold-dim mb-2">
           {label}
         </label>
       )}
       <textarea
         ref={ref}
         rows={rows}
-        className={`w-full px-4 py-3 rounded-xl border bg-white text-charcoal placeholder:text-charcoal/30 transition-colors focus:outline-none focus:ring-2 focus:ring-sage/30 focus:border-sage resize-y ${
-          error ? 'border-red-400' : 'border-sand'
+        className={`w-full px-4 py-3 rounded-sm border bg-card-dark text-cream placeholder:text-warm-gray/60 font-body text-sm transition-colors duration-300 focus:outline-none focus:border-gold-border resize-y ${
+          error ? 'border-red-500/60' : 'border-card-border'
         }`}
         {...props}
       />
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-sm text-red-400/80">{error}</p>}
     </div>
   );
 });

@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
-import { adminGetTestimonials, adminCreateTestimonial, adminUpdateTestimonial } from '../../lib/api';
+import {
+  adminGetTestimonials,
+  adminCreateTestimonial,
+  adminUpdateTestimonial,
+} from '../../lib/api';
 import Input from '../../components/ui/Input';
 import Textarea from '../../components/ui/Textarea';
 import Button from '../../components/ui/Button';
@@ -14,10 +18,13 @@ export default function TestimonialForm() {
   const isEdit = !!id;
 
   const { data, loading } = useApi(
-    () => isEdit ? adminGetTestimonials().then((d) => {
-      const list = d?.testimonials || d || [];
-      return list.find((t) => t.id === id);
-    }) : Promise.resolve(null),
+    () =>
+      isEdit
+        ? adminGetTestimonials().then((d) => {
+            const list = d?.testimonials || d || [];
+            return list.find((t) => t.id === id);
+          })
+        : Promise.resolve(null),
     [id]
   );
 
@@ -71,13 +78,16 @@ export default function TestimonialForm() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-2xl font-bold text-charcoal">
+      <h1
+        className="font-display font-light text-cream m-0"
+        style={{ fontSize: 'clamp(28px, 3.5vw, 40px)', letterSpacing: '-0.01em' }}
+      >
         {isEdit ? 'Edit Testimonial' : 'New Testimonial'}
       </h1>
 
       <form onSubmit={handleSubmit} className="max-w-3xl space-y-6">
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+          <div className="bg-card-dark border border-red-500/40 text-red-300 rounded-sm px-4 py-3 font-body text-sm">
             {error}
           </div>
         )}
@@ -113,14 +123,19 @@ export default function TestimonialForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-charcoal/70 mb-1.5">Rating</label>
+            <label className="block font-accent uppercase tracking-[0.15em] text-[11px] text-gold-dim mb-2">
+              Rating
+            </label>
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
                   type="button"
                   onClick={() => set('rating', star)}
-                  className="text-2xl min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  className={`text-2xl min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors ${
+                    star <= form.rating ? 'text-gold' : 'text-warm-gray hover:text-gold'
+                  }`}
+                  aria-label={`${star} star`}
                 >
                   {star <= form.rating ? '★' : '☆'}
                 </button>
@@ -141,26 +156,30 @@ export default function TestimonialForm() {
               type="checkbox"
               checked={!!form.is_featured}
               onChange={(e) => set('is_featured', e.target.checked ? 1 : 0)}
-              className="w-5 h-5 rounded border-sand text-sage focus:ring-sage/30"
+              className="w-5 h-5 rounded-sm accent-gold bg-card-dark border border-card-border"
             />
-            <span className="text-sm font-medium text-charcoal/70">Featured on home page</span>
+            <span className="font-body text-sm text-sand">Featured on home page</span>
           </label>
           <label className="flex items-center gap-3 cursor-pointer min-h-[44px]">
             <input
               type="checkbox"
               checked={!!form.is_active}
               onChange={(e) => set('is_active', e.target.checked ? 1 : 0)}
-              className="w-5 h-5 rounded border-sand text-sage focus:ring-sage/30"
+              className="w-5 h-5 rounded-sm accent-gold bg-card-dark border border-card-border"
             />
-            <span className="text-sm font-medium text-charcoal/70">Active (visible on site)</span>
+            <span className="font-body text-sm text-sand">Active (visible on site)</span>
           </label>
         </div>
 
-        <div className="flex items-center gap-3 pt-4 border-t border-sand">
+        <div className="flex items-center gap-3 pt-4 border-t border-card-border">
           <Button type="submit" disabled={saving}>
             {saving ? 'Saving...' : isEdit ? 'Update' : 'Create'}
           </Button>
-          <Button type="button" variant="ghost" onClick={() => navigate('/admin/testimonials')}>
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={() => navigate('/admin/testimonials')}
+          >
             Cancel
           </Button>
         </div>

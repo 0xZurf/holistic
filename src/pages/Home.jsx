@@ -3,20 +3,22 @@ import FeaturedServices from '../components/home/FeaturedServices';
 import RetreatSpotlight from '../components/home/RetreatSpotlight';
 import ProductHighlights from '../components/home/ProductHighlights';
 import Testimonials from '../components/home/Testimonials';
-import SectionDivider from '../components/ui/SectionDivider';
+import Newsletter from '../components/home/Newsletter';
+import GoldDripDivider from '../components/ui/GoldDripDivider';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <SectionDivider color="cream" />
+      <GoldDripDivider />
       <FeaturedServices />
-      <SectionDivider color="sand" />
+      <GoldDripDivider />
       <RetreatSpotlight />
-      <SectionDivider color="cream" />
+      <GoldDripDivider />
       <ProductHighlights />
-      <SectionDivider color="sand" />
+      <GoldDripDivider />
       <Testimonials />
+      <Newsletter />
     </>
   );
 }

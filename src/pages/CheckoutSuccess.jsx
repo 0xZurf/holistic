@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Button from '../components/ui/Button';
+import SolisLogo from '../components/ui/SolisLogo';
 import useCart from '../hooks/useCart';
 
 export default function CheckoutSuccess() {
@@ -10,22 +11,37 @@ export default function CheckoutSuccess() {
   }, []);
 
   return (
-    <div className="section-padding text-center">
-      <div className="container-main max-w-2xl">
-        <div className="w-16 h-16 bg-sage/10 rounded-full flex items-center justify-center mx-auto mb-6">
-          <svg className="w-8 h-8 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
+    <div
+      className="bg-dark-bg text-center"
+      style={{ padding: '80px clamp(16px, 4vw, 48px)' }}
+    >
+      <div className="max-w-[640px] mx-auto">
+        <div className="flex justify-center mb-6">
+          <div
+            className="rounded-full border border-gold-border flex items-center justify-center"
+            style={{ width: 80, height: 80 }}
+          >
+            <SolisLogo size={48} />
+          </div>
         </div>
-        <h1 className="font-display text-4xl font-semibold text-charcoal mb-4">
-          Thank You!
+        <h1
+          className="font-display font-light text-cream m-0 mb-4"
+          style={{ fontSize: 'clamp(32px, 4.5vw, 52px)', letterSpacing: '-0.01em' }}
+        >
+          Thank <span className="text-gold">You</span>.
         </h1>
-        <p className="text-charcoal/60 text-lg mb-8 leading-relaxed">
-          Your order has been confirmed. You'll receive a confirmation email shortly with your order details.
+        <p
+          className="font-body text-warm-gray mx-auto mb-10"
+          style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 480 }}
+        >
+          Your order has been confirmed. You'll receive a confirmation transmission shortly
+          with your order details.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button to="/shop">Continue Shopping</Button>
-          <Button to="/" variant="outline">Back to Home</Button>
+          <Button to="/" variant="secondary">
+            Back to Home
+          </Button>
         </div>
       </div>
     </div>

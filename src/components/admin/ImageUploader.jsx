@@ -27,16 +27,14 @@ export default function ImageUploader({ value, onChange, label = 'Image', classN
         label={label}
       />
       {uploading && (
-        <p className="mt-2 text-sm text-sage animate-pulse">Uploading...</p>
+        <p className="mt-2 font-body text-sm text-gold animate-pulse">Uploading...</p>
       )}
-      {error && (
-        <p className="mt-2 text-sm text-red-500">{error}</p>
-      )}
+      {error && <p className="mt-2 font-body text-sm text-red-300">{error}</p>}
       {value && !uploading && (
         <button
           type="button"
           onClick={() => onChange('')}
-          className="mt-2 text-xs text-red-500 hover:text-red-700"
+          className="mt-2 font-body text-xs text-warm-gray hover:text-gold transition-colors"
         >
           Remove image
         </button>

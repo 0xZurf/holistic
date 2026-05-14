@@ -1,25 +1,86 @@
+import { Link } from 'react-router-dom';
 import useApi from '../../hooks/useApi';
 import { getRetreats } from '../../lib/api';
-import Button from '../ui/Button';
-import Badge from '../ui/Badge';
 import FadeIn from '../ui/FadeIn';
+import SacredGeoBg from '../ui/SacredGeoBg';
 import { RetreatSpotlightSkeleton } from '../ui/Skeleton';
-import { formatDateRange, formatPrice } from '../../lib/formatters';
+import { formatDateRange } from '../../lib/formatters';
+
+function ExperienceCard({ retreat }) {
+  return (
+    <Link
+      to={`/retreats/${retreat.slug}`}
+      className="group flex flex-wrap items-center gap-8 bg-card-dark border border-card-border rounded transition-all duration-[400ms] hover:-translate-y-0.5 hover:border-gold-border no-underline"
+      style={{ padding: '28px 32px' }}
+    >
+      <div
+        className="flex items-center justify-center flex-shrink-0 rounded-full border border-gold-border"
+        style={{ width: 72, height: 72 }}
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.2">
+          <circle cx="12" cy="12" r="5" />
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => {
+            const r = (a * Math.PI) / 180;
+            return (
+              <line
+                key={a}
+                x1={12 + 7.5 * Math.cos(r)}
+                y1={12 + 7.5 * Math.sin(r)}
+                x2={12 + 10 * Math.cos(r)}
+                y2={12 + 10 * Math.sin(r)}
+              />
+            );
+          })}
+        </svg>
+      </div>
+
+      <div className="flex-1 min-w-[200px]" style={{ flex: '1 1 300px' }}>
+        <h3 className="font-display font-medium text-cream text-[22px] leading-tight mb-1.5 m-0">
+          {retreat.title}
+        </h3>
+        <p className="font-body text-sm text-warm-gray leading-relaxed m-0">
+          {retreat.description}
+        </p>
+      </div>
+
+      <div className="flex flex-col items-end gap-2 flex-shrink-0 min-w-[160px]">
+        <div className="font-body text-[13px] text-sand">
+          {formatDateRange(retreat.start_date, retreat.end_date)}
+        </div>
+        <div className="font-body text-[12px] text-warm-gray">{retreat.location}</div>
+        {typeof retreat.spots_remaining === 'number' && (
+          <span className="font-accent uppercase tracking-[0.15em] text-[10px] text-gold border border-gold-border rounded-sm px-3 py-1">
+            {retreat.spots_remaining} spots left
+          </span>
+        )}
+      </div>
+    </Link>
+  );
+}
 
 export default function RetreatSpotlight() {
   const { data, loading } = useApi(getRetreats);
-  const nextRetreat = (data || [])[0];
+  const experiences = (data || []).slice(0, 3);
 
-  if (!loading && !nextRetreat) return null;
+  if (!loading && experiences.length === 0) return null;
 
   return (
-    <section className="section-padding bg-sand">
-      <div className="container-main">
+    <section
+      className="relative bg-obsidian overflow-hidden"
+      style={{ padding: '80px clamp(16px, 4vw, 48px)' }}
+    >
+      <SacredGeoBg opacity={0.025} />
+      <div className="max-w-[1200px] mx-auto relative z-10">
         <FadeIn>
-          <div className="text-center mb-12">
-            <p className="font-accent text-sage text-lg mb-2">Next Retreat</p>
-            <h2 className="font-display text-3xl sm:text-4xl font-semibold text-charcoal">
-              Upcoming Experience
+          <div className="text-center mb-14">
+            <span className="font-accent uppercase tracking-[0.3em] text-[11px] text-gold-dim">
+              What's Next
+            </span>
+            <h2
+              className="font-display font-light text-cream m-0"
+              style={{ fontSize: 'clamp(28px, 3.5vw, 44px)', marginTop: 12 }}
+            >
+              Upcoming <span className="text-gold">Experiences</span>
             </h2>
           </div>
         </FadeIn>
@@ -27,33 +88,22 @@ export default function RetreatSpotlight() {
         {loading ? (
           <RetreatSpotlightSkeleton />
         ) : (
-          <FadeIn>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-white rounded-2xl shadow-lg overflow-hidden">
-              <div className="h-64 sm:h-80 lg:h-full">
-                <img
-                  src={nextRetreat.image_url}
-                  alt={nextRetreat.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-6 sm:p-8 lg:p-10">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Badge variant="clay">{nextRetreat.location}</Badge>
-                  <Badge variant="sage">{nextRetreat.spots_remaining} spots left</Badge>
-                </div>
-                <h3 className="font-display text-2xl sm:text-3xl font-semibold text-charcoal mb-4">
-                  {nextRetreat.title}
-                </h3>
-                <p className="text-charcoal/60 leading-relaxed mb-4">{nextRetreat.description}</p>
-                <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-charcoal/70">
-                  <span>{formatDateRange(nextRetreat.start_date, nextRetreat.end_date)}</span>
-                  <span className="font-semibold text-charcoal">{formatPrice(nextRetreat.price)}</span>
-                </div>
-                <Button to={`/retreats/${nextRetreat.slug}`}>Learn More</Button>
-              </div>
-            </div>
-          </FadeIn>
+          <div className="flex flex-col gap-5">
+            {experiences.map((retreat, i) => (
+              <FadeIn key={retreat.id || retreat.slug} delay={i * 0.1}>
+                <ExperienceCard retreat={retreat} />
+              </FadeIn>
+            ))}
+          </div>
         )}
+
+        <FadeIn delay={0.4}>
+          <div className="text-center mt-12">
+            <Link to="/retreats" className="btn-secondary">
+              View All Experiences
+            </Link>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

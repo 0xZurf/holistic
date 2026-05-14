@@ -1,44 +1,69 @@
-import Button from '../ui/Button';
-import FadeIn from '../ui/FadeIn';
-import { SITE_NAME, SITE_TAGLINE } from '../../lib/constants';
+import { Link } from 'react-router-dom';
+import SacredGeoBg from '../ui/SacredGeoBg';
 
 export default function Hero() {
   return (
-    <section className="relative grain-overlay bg-gradient-to-br from-earth via-earth/90 to-sage/80 text-cream overflow-hidden">
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=1600&h=900&fit=crop"
-          alt=""
-          className="w-full h-full object-cover opacity-20"
-        />
-      </div>
+    <section
+      className="relative flex items-center justify-center text-center overflow-hidden"
+      style={{
+        minHeight: '100vh',
+        background:
+          'radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.08) 0%, #0f0e0c 70%)',
+        padding: '120px clamp(16px, 4vw, 48px) 80px',
+      }}
+    >
+      <SacredGeoBg opacity={0.035} />
 
-      <div className="relative container-main px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
-        <div className="max-w-2xl">
-          <FadeIn delay={100} direction="none">
-            <p className="font-accent text-gold text-xl sm:text-2xl mb-4">{SITE_TAGLINE}</p>
-          </FadeIn>
-          <FadeIn delay={200}>
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-              {SITE_NAME}
-            </h1>
-          </FadeIn>
-          <FadeIn delay={350}>
-            <p className="text-lg sm:text-xl text-cream/80 leading-relaxed mb-8 max-w-xl">
-              Discover a path to wellness that honors your whole being. Through personalized consulting,
-              transformative retreats, and curated wellness products.
-            </p>
-          </FadeIn>
-          <FadeIn delay={500}>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button to="/services" variant="gold" size="lg">
-                Explore Services
-              </Button>
-              <Button to="/about" variant="outline" size="lg" className="border-cream/40 text-cream hover:bg-cream/10 hover:text-cream">
-                Our Story
-              </Button>
-            </div>
-          </FadeIn>
+      <div
+        className="pointer-events-none"
+        style={{
+          position: 'absolute',
+          top: '15%',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: 400,
+          height: 400,
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+        }}
+      />
+
+      <div className="relative z-10 max-w-[900px]">
+        <div className="font-accent uppercase tracking-[0.35em] text-[12px] text-gold-dim mb-8">
+          Sacred Wellness for the Modern Imperium
+        </div>
+        <h1
+          className="font-display font-light text-cream m-0"
+          style={{
+            fontSize: 'clamp(36px, 5.5vw, 72px)',
+            lineHeight: 1.1,
+            letterSpacing: '-0.01em',
+            marginBottom: 24,
+          }}
+        >
+          Radiance, Realized:
+          <br />
+          <span className="text-gold">Immeasurable Integration</span>
+          <br />
+          for the Global Imperium.
+        </h1>
+        <p
+          className="font-body text-warm-gray mx-auto"
+          style={{ fontSize: 17, lineHeight: 1.7, maxWidth: 560, marginBottom: 40 }}
+        >
+          Where ancient solar codes meet modern healing science. Retreats, energy work,
+          sacred botanicals, and holistic consulting for those ready to embody their highest
+          frequency.
+        </p>
+        <div className="flex gap-4 justify-center flex-wrap">
+          <Link to="/services" className="btn-primary">
+            Explore Offerings
+          </Link>
+          <Link to="/about" className="btn-secondary">
+            Our Story
+          </Link>
         </div>
       </div>
     </section>

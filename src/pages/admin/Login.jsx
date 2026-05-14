@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
+import SolisLogo from '../../components/ui/SolisLogo';
+import SacredGeoBg from '../../components/ui/SacredGeoBg';
 
 export default function Login() {
   const { authenticated, checking, login, checkAuth } = useAuth();
@@ -37,16 +39,24 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-cream flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-lg border border-sand max-w-sm w-full p-8">
+    <div className="relative min-h-screen bg-dark-bg flex items-center justify-center p-4 overflow-hidden">
+      <SacredGeoBg opacity={0.03} />
+      <div className="relative z-10 w-full max-w-sm bg-card-dark border border-card-border rounded p-10">
         <div className="text-center mb-8">
-          <h1 className="font-display text-2xl font-bold text-earth">Solis Imperium</h1>
-          <p className="text-sm text-charcoal/50 mt-1">Admin Portal</p>
+          <div className="flex justify-center mb-4">
+            <SolisLogo size={44} />
+          </div>
+          <h1 className="font-accent uppercase tracking-[0.25em] text-[14px] text-gold m-0">
+            Solis Imperium
+          </h1>
+          <p className="font-body text-xs text-warm-gray uppercase tracking-[0.2em] mt-2">
+            Admin Portal
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+            <div className="bg-card-dark border border-red-500/40 text-red-300 rounded-sm px-4 py-3 font-body text-sm">
               {error}
             </div>
           )}

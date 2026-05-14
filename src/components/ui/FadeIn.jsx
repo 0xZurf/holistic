@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 
-export default function FadeIn({ children, className = '', delay = 0, direction = 'up' }) {
+export default function FadeIn({ children, className = '', delay = 0, direction = 'up', style = {} }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -8,28 +8,38 @@ export default function FadeIn({ children, className = '', delay = 0, direction 
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); } },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
-  const directions = {
-    up: 'translate-y-8',
-    down: '-translate-y-8',
-    left: 'translate-x-8',
-    right: '-translate-x-8',
-    none: '',
+  const offsets = {
+    up: 'translateY(32px)',
+    down: 'translateY(-32px)',
+    left: 'translateX(32px)',
+    right: 'translateX(-32px)',
+    none: 'none',
   };
+
+  const delaySec = typeof delay === 'number' && delay > 10 ? delay / 1000 : delay;
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible ? 'opacity-100 translate-x-0 translate-y-0' : `opacity-0 ${directions[direction]}`
-      } ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translate(0,0)' : offsets[direction] || offsets.up,
+        transition: `opacity 0.8s ease ${delaySec}s, transform 0.8s ease ${delaySec}s`,
+        ...style,
+      }}
     >
       {children}
     </div>
