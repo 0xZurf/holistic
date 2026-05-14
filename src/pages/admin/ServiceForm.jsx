@@ -17,7 +17,10 @@ export default function ServiceForm() {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-2xl font-bold text-charcoal">
+      <h1
+        className="font-display font-light text-cream m-0"
+        style={{ fontSize: 'clamp(28px, 3.5vw, 40px)', letterSpacing: '-0.01em' }}
+      >
         {isEdit ? 'Edit Service' : 'New Service'}
       </h1>
       <ContentForm

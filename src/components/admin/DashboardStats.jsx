@@ -10,19 +10,35 @@ const icons = {
 
 function StatCard({ label, value, sublabel, subvalue, icon }) {
   return (
-    <div className="bg-white rounded-2xl border border-sand p-6">
-      <div className="flex items-start justify-between">
-        <div>
-          <p className="text-sm text-charcoal/50 font-medium">{label}</p>
-          <p className="text-2xl font-display font-bold text-charcoal mt-1">{value}</p>
+    <div className="bg-card-dark border border-card-border rounded p-6 transition-colors hover:border-gold-border">
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <p className="font-accent uppercase tracking-[0.2em] text-[11px] text-gold-dim">{label}</p>
+          <p className="font-display font-light text-cream text-[28px] mt-1.5 leading-none">
+            {value}
+          </p>
           {sublabel && (
-            <p className="text-xs text-charcoal/40 mt-2">
-              {sublabel}: <span className="text-charcoal/60 font-medium">{subvalue}</span>
+            <p className="font-body text-[11px] text-warm-gray mt-3 uppercase tracking-[0.1em]">
+              {sublabel}: <span className="text-sand">{subvalue}</span>
             </p>
           )}
         </div>
-        <div className="p-3 bg-sage/10 rounded-xl">
-          <svg className="w-6 h-6 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <div
+          className="rounded-sm flex items-center justify-center flex-shrink-0"
+          style={{
+            width: 44,
+            height: 44,
+            background: 'rgba(201,168,76,0.08)',
+            border: '1px solid rgba(201,168,76,0.25)',
+          }}
+        >
+          <svg
+            className="w-5 h-5 text-gold"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={1.3}
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d={icons[icon]} />
           </svg>
         </div>

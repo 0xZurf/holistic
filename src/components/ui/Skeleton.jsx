@@ -1,10 +1,10 @@
 function Base({ className = '' }) {
-  return <div className={`animate-pulse bg-sand/70 rounded-xl ${className}`} />;
+  return <div className={`animate-pulse bg-card-border/60 rounded-sm ${className}`} />;
 }
 
 export function CardSkeleton({ imageClass = 'h-48' }) {
   return (
-    <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+    <div className="bg-card-dark border border-card-border rounded overflow-hidden">
       <Base className={`${imageClass} rounded-none`} />
       <div className="p-5 sm:p-6 space-y-3">
         <Base className="h-4 w-20" />
@@ -28,7 +28,7 @@ export function CardGridSkeleton({ count = 3, columns = 'grid-cols-1 md:grid-col
 
 export function RetreatSpotlightSkeleton() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-card-dark border border-card-border rounded overflow-hidden">
       <Base className="h-64 sm:h-80 lg:h-96 rounded-none" />
       <div className="p-6 sm:p-8 lg:p-10 space-y-4">
         <div className="flex gap-2">
@@ -47,18 +47,13 @@ export function RetreatSpotlightSkeleton() {
 
 export function TestimonialSkeleton() {
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6 space-y-4">
-      <div className="flex gap-1">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Base key={i} className="h-5 w-5 rounded-full" />
-        ))}
-      </div>
+    <div className="bg-card-dark border border-card-border rounded p-6 space-y-4">
+      <Base className="h-6 w-12" />
       <Base className="h-4 w-full" />
       <Base className="h-4 w-full" />
       <Base className="h-4 w-3/4" />
-      <div className="flex items-center gap-3 pt-2">
-        <Base className="h-10 w-10 rounded-full" />
-        <div className="space-y-2">
+      <div className="flex items-center gap-3 pt-2 border-t border-card-border">
+        <div className="space-y-2 pt-2">
           <Base className="h-4 w-24" />
           <Base className="h-3 w-16" />
         </div>

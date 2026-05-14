@@ -4,5 +4,7 @@ dist
 .env.local
 .vercel
 *.log
+.DS_Store
 
-.vercel
+# Design reference files (kept locally, not deployed)
+New design/

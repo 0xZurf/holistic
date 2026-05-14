@@ -1,39 +1,31 @@
 export default function TestimonialCard({ testimonial }) {
   return (
-    <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-md">
-      {testimonial.rating && (
-        <div className="flex gap-1 mb-4">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <svg
-              key={i}
-              className={`w-4 h-4 ${i < testimonial.rating ? 'text-gold' : 'text-sand'}`}
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          ))}
+    <div
+      className="relative bg-card-dark border border-card-border rounded"
+      style={{ padding: '32px 28px' }}
+    >
+      <div
+        aria-hidden="true"
+        className="absolute font-display text-gold-dim"
+        style={{ top: 16, left: 24, fontSize: 48, lineHeight: 1 }}
+      >
+        &ldquo;
+      </div>
+
+      <p
+        className="font-body italic text-sand m-0"
+        style={{ fontSize: 15, lineHeight: 1.7, margin: '16px 0 20px' }}
+      >
+        {testimonial.body}
+      </p>
+
+      <div className="border-t border-card-border pt-4">
+        <div className="font-display font-medium text-cream text-base">
+          {testimonial.name}
         </div>
-      )}
-      <p className="text-charcoal/70 leading-relaxed italic mb-6">"{testimonial.body}"</p>
-      <div className="flex items-center gap-3">
-        {testimonial.image_url ? (
-          <img
-            src={testimonial.image_url}
-            alt={testimonial.name}
-            className="w-10 h-10 rounded-full object-cover"
-          />
-        ) : (
-          <div className="w-10 h-10 rounded-full bg-sage/10 flex items-center justify-center text-sage font-semibold text-sm">
-            {testimonial.name.charAt(0)}
-          </div>
+        {testimonial.title && (
+          <div className="font-body text-xs text-warm-gray">{testimonial.title}</div>
         )}
-        <div>
-          <p className="font-semibold text-charcoal text-sm">{testimonial.name}</p>
-          {testimonial.title && (
-            <p className="text-xs text-charcoal/50">{testimonial.title}</p>
-          )}
-        </div>
       </div>
     </div>
   );

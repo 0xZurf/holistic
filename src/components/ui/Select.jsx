@@ -4,14 +4,14 @@ const Select = forwardRef(function Select({ label, error, options = [], placehol
   return (
     <div className={className}>
       {label && (
-        <label className="block text-sm font-medium text-charcoal/70 mb-1.5">
+        <label className="block font-accent uppercase tracking-[0.15em] text-[11px] text-gold-dim mb-2">
           {label}
         </label>
       )}
       <select
         ref={ref}
-        className={`w-full px-4 py-3 min-h-[44px] rounded-xl border bg-white text-charcoal transition-colors focus:outline-none focus:ring-2 focus:ring-sage/30 focus:border-sage appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%232C2C2C%22%20d%3D%22M6%208L1%203h10z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[right_1rem_center] pr-10 ${
-          error ? 'border-red-400' : 'border-sand'
+        className={`w-full px-4 py-3 min-h-[44px] rounded-sm border bg-card-dark text-cream font-body text-sm transition-colors duration-300 focus:outline-none focus:border-gold-border appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%23c9a84c%22%20d%3D%22M6%208L1%203h10z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[right_1rem_center] pr-10 ${
+          error ? 'border-red-500/60' : 'border-card-border'
         }`}
         {...props}
       >
@@ -26,7 +26,7 @@ const Select = forwardRef(function Select({ label, error, options = [], placehol
           </option>
         ))}
       </select>
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-sm text-red-400/80">{error}</p>}
     </div>
   );
 });

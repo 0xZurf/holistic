@@ -4,6 +4,7 @@ import Textarea from '../components/ui/Textarea';
 import Select from '../components/ui/Select';
 import Button from '../components/ui/Button';
 import FadeIn from '../components/ui/FadeIn';
+import SacredGeoBg from '../components/ui/SacredGeoBg';
 import { useToast } from '../components/ui/Toast';
 import { submitContact } from '../lib/api';
 import { CONTACT_SUBJECTS } from '../lib/constants';
@@ -33,32 +34,56 @@ export default function Contact() {
   }
 
   return (
-    <div className="section-padding">
-      <div className="container-main max-w-4xl">
+    <div
+      className="relative bg-dark-bg overflow-hidden"
+      style={{ padding: '80px clamp(16px, 4vw, 48px)' }}
+    >
+      <SacredGeoBg opacity={0.025} />
+      <div className="relative z-10 max-w-[1100px] mx-auto">
         <FadeIn>
-          <div className="text-center mb-12">
-            <p className="font-accent text-sage text-lg mb-2">Reach Out</p>
-            <h1 className="font-display text-4xl sm:text-5xl font-semibold text-charcoal">
-              Get in Touch
+          <div className="text-center mb-14">
+            <span className="font-accent uppercase tracking-[0.3em] text-[11px] text-gold-dim">
+              Reach Out
+            </span>
+            <h1
+              className="font-display font-light text-cream m-0"
+              style={{ fontSize: 'clamp(36px, 5vw, 64px)', marginTop: 12, letterSpacing: '-0.01em' }}
+            >
+              Get in <span className="text-gold">Touch</span>
             </h1>
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <FadeIn delay={100}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+          <FadeIn delay={0.1}>
             <div>
               {submitted ? (
-                <div className="bg-sage/10 rounded-2xl p-8 text-center">
-                  <svg className="w-12 h-12 text-sage mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                  <h3 className="font-display text-xl font-semibold text-charcoal mb-2">Message Sent!</h3>
-                  <p className="text-charcoal/60">We'll get back to you as soon as possible.</p>
+                <div className="bg-card-dark border border-gold-border rounded p-8 text-center">
+                  <div
+                    className="rounded-full border border-gold-border mx-auto mb-4 flex items-center justify-center"
+                    style={{ width: 56, height: 56 }}
+                  >
+                    <svg className="w-7 h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display font-light text-cream text-xl m-0 mb-2">
+                    Transmission Received
+                  </h3>
+                  <p className="font-body text-warm-gray m-0">
+                    We'll get back to you as soon as possible.
+                  </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <Input label="Name" name="name" placeholder="Your name" required />
-                  <Input label="Email" name="email" type="email" placeholder="your@email.com" required />
+                  <Input
+                    label="Email"
+                    name="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                  />
                   <Select
                     label="Subject"
                     name="subject"
@@ -67,7 +92,13 @@ export default function Contact() {
                     defaultValue=""
                     required
                   />
-                  <Textarea label="Message" name="message" placeholder="How can we help you?" rows={5} required />
+                  <Textarea
+                    label="Message"
+                    name="message"
+                    placeholder="How can we help you?"
+                    rows={5}
+                    required
+                  />
                   <Button type="submit" className="w-full" disabled={loading}>
                     {loading ? 'Sending...' : 'Send Message'}
                   </Button>
@@ -76,20 +107,26 @@ export default function Contact() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={200}>
+          <FadeIn delay={0.2}>
             <div className="space-y-8">
               <div>
-                <h3 className="font-display text-lg font-semibold text-charcoal mb-2">Contact Info</h3>
-                <p className="text-charcoal/60">info@example.com</p>
+                <div className="font-accent uppercase tracking-[0.2em] text-[11px] text-gold-dim mb-2">
+                  Contact Info
+                </div>
+                <p className="font-body text-cream">info@example.com</p>
               </div>
               <div>
-                <h3 className="font-display text-lg font-semibold text-charcoal mb-2">Location</h3>
-                <p className="text-charcoal/60">Sedona, Arizona</p>
+                <div className="font-accent uppercase tracking-[0.2em] text-[11px] text-gold-dim mb-2">
+                  Location
+                </div>
+                <p className="font-body text-cream">Sedona, Arizona</p>
               </div>
               <div>
-                <h3 className="font-display text-lg font-semibold text-charcoal mb-2">Hours</h3>
-                <p className="text-charcoal/60">Monday – Friday: 9am – 5pm</p>
-                <p className="text-charcoal/60">Saturday: 10am – 2pm</p>
+                <div className="font-accent uppercase tracking-[0.2em] text-[11px] text-gold-dim mb-2">
+                  Hours
+                </div>
+                <p className="font-body text-cream m-0">Monday – Friday: 9am – 5pm</p>
+                <p className="font-body text-cream m-0">Saturday: 10am – 2pm</p>
               </div>
             </div>
           </FadeIn>

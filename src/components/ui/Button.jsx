@@ -1,17 +1,24 @@
 import { Link } from 'react-router-dom';
 
+const base =
+  'inline-flex items-center justify-center font-accent uppercase tracking-[0.15em] rounded-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap';
+
 const variants = {
-  primary: 'bg-sage text-white hover:bg-sage/90 shadow-md hover:shadow-lg',
-  secondary: 'bg-earth text-cream hover:bg-earth/90 shadow-md hover:shadow-lg',
-  outline: 'border-2 border-sage text-sage hover:bg-sage hover:text-white',
-  ghost: 'text-sage hover:bg-sage/10',
-  gold: 'bg-gold text-white hover:bg-gold/90 shadow-md hover:shadow-lg',
+  primary:
+    'text-dark-bg font-semibold bg-gradient-to-br from-gold to-gold-light hover:brightness-105 border-0',
+  gold:
+    'text-dark-bg font-semibold bg-gradient-to-br from-gold to-gold-light hover:brightness-105 border-0',
+  secondary:
+    'text-gold border border-gold-border bg-transparent hover:bg-gold/[0.06] hover:border-gold',
+  outline:
+    'text-gold border border-gold-border bg-transparent hover:bg-gold/[0.06] hover:border-gold',
+  ghost: 'text-gold hover:text-gold-light bg-transparent border-0',
 };
 
 const sizes = {
-  sm: 'px-4 py-2 text-sm min-h-[36px]',
-  md: 'px-6 py-3 text-sm min-h-[44px]',
-  lg: 'px-8 py-4 text-base min-h-[48px]',
+  sm: 'px-5 py-2.5 text-[11px] min-h-[36px]',
+  md: 'px-7 py-3 text-[13px] min-h-[44px]',
+  lg: 'px-9 py-3.5 text-[13px] min-h-[48px]',
 };
 
 export default function Button({
@@ -22,7 +29,7 @@ export default function Button({
   className = '',
   ...props
 }) {
-  const classes = `inline-flex items-center justify-center font-medium rounded-xl tracking-wide uppercase transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${variants[variant]} ${sizes[size]} ${className}`;
+  const classes = `${base} ${variants[variant] || variants.primary} ${sizes[size]} ${className}`;
 
   if (to) {
     return (

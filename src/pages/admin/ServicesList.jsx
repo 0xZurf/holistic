@@ -10,19 +10,19 @@ const columns = [
   {
     key: 'title',
     label: 'Title',
-    render: (row) => <span className="font-medium text-charcoal">{row.title}</span>,
+    render: (row) => <span className="font-display text-cream">{row.title}</span>,
   },
   {
     key: 'category',
     label: 'Category',
-    render: (row) => row.category ? <Badge variant="sage">{row.category}</Badge> : '—',
+    render: (row) => (row.category ? <Badge>{row.category}</Badge> : <span className="text-warm-gray">—</span>),
   },
-  { key: 'price', label: 'Price', render: (row) => formatPrice(row.price) },
+  { key: 'price', label: 'Price', render: (row) => <span className="text-gold">{formatPrice(row.price)}</span> },
   {
     key: 'is_active',
     label: 'Status',
     render: (row) => (
-      <Badge variant={row.is_active ? 'sage' : 'charcoal'}>
+      <Badge variant={row.is_active ? 'gold' : 'muted'}>
         {row.is_active ? 'Active' : 'Inactive'}
       </Badge>
     ),
@@ -49,14 +49,20 @@ export default function ServicesList() {
       render: (row) => (
         <div className="flex items-center gap-2">
           <button
-            onClick={(e) => { e.stopPropagation(); navigate(`/admin/services/${row.id}`); }}
-            className="text-sage hover:text-sage/70 text-sm font-medium min-w-[44px] min-h-[44px] flex items-center justify-center"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigate(`/admin/services/${row.id}`);
+            }}
+            className="font-accent uppercase tracking-[0.15em] text-[11px] text-gold hover:text-gold-light min-w-[44px] min-h-[44px] flex items-center justify-center"
           >
             Edit
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); handleDelete(row.id); }}
-            className="text-red-500 hover:text-red-700 text-sm font-medium min-w-[44px] min-h-[44px] flex items-center justify-center"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleDelete(row.id);
+            }}
+            className="font-accent uppercase tracking-[0.15em] text-[11px] text-warm-gray hover:text-red-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
           >
             Delete
           </button>
@@ -67,14 +73,29 @@ export default function ServicesList() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="font-display text-2xl font-bold text-charcoal">Services</h1>
-          <p className="text-sm text-charcoal/50 mt-1">{services.length} total</p>
+          <span className="font-accent uppercase tracking-[0.3em] text-[11px] text-gold-dim">
+            Catalog
+          </span>
+          <h1
+            className="font-display font-light text-cream m-0"
+            style={{ fontSize: 'clamp(28px, 3.5vw, 40px)', marginTop: 6, letterSpacing: '-0.01em' }}
+          >
+            Services
+          </h1>
+          <p className="font-body text-sm text-warm-gray mt-1">{services.length} total</p>
         </div>
-        <Button to="/admin/services/new" size="sm">New Service</Button>
+        <Button to="/admin/services/new" size="sm">
+          New Service
+        </Button>
       </div>
-      <DataTable columns={columnsWithActions} rows={services} loading={loading} emptyMessage="No services yet." />
+      <DataTable
+        columns={columnsWithActions}
+        rows={services}
+        loading={loading}
+        emptyMessage="No services yet."
+      />
     </div>
   );
 }
