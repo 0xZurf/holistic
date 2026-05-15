@@ -8,3 +8,4 @@ dist
 
 # Design reference files (kept locally, not deployed)
 New design/
+.env*.local

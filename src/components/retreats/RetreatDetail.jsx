@@ -90,8 +90,7 @@ export default function RetreatDetail({ retreat }) {
             )}
 
             <div
-              className="font-body text-warm-gray leading-relaxed mb-10"
-              style={{ lineHeight: 1.7 }}
+              className="cms-content mb-10"
               dangerouslySetInnerHTML={{ __html: retreat.body }}
             />
 

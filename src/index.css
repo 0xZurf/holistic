@@ -129,6 +129,107 @@
     padding: 5px 12px;
     border-radius: 2px;
   }
+
+  /* Admin-authored HTML body content (rendered via dangerouslySetInnerHTML
+     on Service/Retreat/Product detail pages). */
+  .cms-content {
+    font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-warm-gray);
+  }
+
+  .cms-content > * + * {
+    margin-top: 1em;
+  }
+
+  .cms-content h1,
+  .cms-content h2,
+  .cms-content h3,
+  .cms-content h4 {
+    font-family: 'Cormorant Garamond', Garamond, serif;
+    font-weight: 400;
+    color: var(--color-cream);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-top: 1.8em;
+  }
+
+  .cms-content h2 { font-size: 28px; }
+  .cms-content h3 { font-size: 22px; }
+  .cms-content h4 { font-size: 18px; }
+
+  .cms-content p { margin: 0; }
+
+  .cms-content strong { color: var(--color-cream); font-weight: 500; }
+  .cms-content em { color: var(--color-sand); }
+
+  .cms-content a {
+    color: var(--color-gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-gold-border);
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .cms-content a:hover {
+    color: var(--color-gold-light);
+    border-bottom-color: var(--color-gold);
+  }
+
+  .cms-content ul,
+  .cms-content ol {
+    padding-left: 1.5em;
+  }
+  .cms-content ul { list-style: disc; }
+  .cms-content ol { list-style: decimal; }
+  .cms-content li::marker { color: var(--color-gold-dim); }
+  .cms-content li + li { margin-top: 0.4em; }
+
+  .cms-content blockquote {
+    border-left: 1px solid var(--color-gold-border);
+    padding: 4px 0 4px 20px;
+    color: var(--color-sand);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', Garamond, serif;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .cms-content hr {
+    border: 0;
+    border-top: 1px solid var(--color-card-border);
+    margin: 2em 0;
+  }
+
+  .cms-content code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    color: var(--color-gold);
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid var(--color-gold-border);
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  .cms-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid var(--color-card-border);
+  }
+
+  .cms-content iframe,
+  .cms-content video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 1px solid var(--color-card-border);
+    border-radius: 4px;
+    background: var(--color-obsidian);
+  }
+
+  .cms-content iframe { border: 0; }
 }
 
 @layer utilities {

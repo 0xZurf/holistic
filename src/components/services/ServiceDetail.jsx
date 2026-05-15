@@ -63,8 +63,7 @@ export default function ServiceDetail({ service }) {
             </div>
 
             <div
-              className="font-body text-warm-gray leading-relaxed mb-10 prose-headings:font-display prose-headings:text-cream prose-strong:text-cream prose-a:text-gold"
-              style={{ lineHeight: 1.7 }}
+              className="cms-content mb-10"
               dangerouslySetInnerHTML={{ __html: service.body }}
             />
 
