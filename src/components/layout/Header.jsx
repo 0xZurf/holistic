@@ -6,7 +6,7 @@ import useCart from '../../hooks/useCart';
 
 const leftLinks = [
   { to: '/retreats', label: 'Retreats' },
-  { to: '/services', label: 'Services' },
+  { to: '/services', label: 'Offerings' },
   { to: '/shop', label: 'Apothecary' },
 ];
 
@@ -67,7 +67,7 @@ export default function Header() {
           aria-label="Solis Imperium home"
         >
           <SolisLogo size={72} />
-          <span className="font-accent uppercase tracking-[0.25em] text-[10px] text-gold">
+          <span className="font-accent uppercase tracking-[0.25em] text-[20px] text-gold">
             Solis Imperium
           </span>
         </Link>

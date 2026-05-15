@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "db:migrate": "node db/migrate.js",
     "db:seed": "node db/seed.js",
-    "db:seed-admin": "node db/seed-admin.js"
+    "db:seed-admin": "node db/seed-admin.js",
+    "db:seed-offerings": "node db/seed-offerings.js"
   },
   "dependencies": {
     "@libsql/client": "^0.17.3",
