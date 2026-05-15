@@ -69,14 +69,14 @@ export default function RetreatSpotlight() {
       className="relative bg-obsidian overflow-hidden"
       style={{ padding: '80px clamp(16px, 4vw, 48px)' }}
     >
-      {/* Gold drips top-to-bottom background */}
+      {/* Gold drips top-to-bottom background — single centered instance */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage: 'url(/images/solis-dripps.png)',
           backgroundSize: 'auto 100%',
-          backgroundRepeat: 'repeat-x',
+          backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center top',
           opacity: 0.18,
           mixBlendMode: 'screen',
