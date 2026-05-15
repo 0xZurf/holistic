@@ -38,7 +38,7 @@ export default function AdminSidebar({ open, onClose }) {
       >
         <div className="p-6 border-b border-card-border">
           <div className="flex items-center gap-3">
-            <SolisLogo size={32} />
+            <SolisLogo size={64} />
             <div>
               <h1 className="font-accent uppercase tracking-[0.2em] text-[12px] text-gold m-0">
                 Solis Imperium

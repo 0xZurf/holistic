@@ -31,7 +31,7 @@ export default function MobileNav({ open, onClose, links }) {
       >
         <div className="flex items-center justify-between p-4 border-b border-card-border">
           <Link to="/" onClick={onClose} className="flex items-center gap-2 no-underline">
-            <SolisLogo size={28} />
+            <SolisLogo size={56} />
             <span className="font-accent uppercase tracking-[0.2em] text-[11px] text-gold">
               Solis Imperium
             </span>

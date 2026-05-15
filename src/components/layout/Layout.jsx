@@ -10,7 +10,7 @@ export default function Layout() {
   return (
     <div className="flex flex-col min-h-screen bg-dark-bg text-cream">
       <Header />
-      <main className={`flex-1 ${isHome ? '' : 'pt-[72px]'}`}>
+      <main className={`flex-1 ${isHome ? '' : 'pt-[112px]'}`}>
         <Outlet />
       </main>
       <Footer />

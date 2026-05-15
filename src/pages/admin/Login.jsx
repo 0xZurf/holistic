@@ -44,7 +44,7 @@ export default function Login() {
       <div className="relative z-10 w-full max-w-sm bg-card-dark border border-card-border rounded p-10">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <SolisLogo size={44} />
+            <SolisLogo size={88} />
           </div>
           <h1 className="font-accent uppercase tracking-[0.25em] text-[14px] text-gold m-0">
             Solis Imperium

@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="max-w-[280px]">
             <div className="flex items-center gap-3 mb-4">
-              <SolisLogo size={32} />
+              <SolisLogo size={64} />
               <span className="font-accent uppercase tracking-[0.2em] text-sm text-gold">
                 Solis Imperium
               </span>

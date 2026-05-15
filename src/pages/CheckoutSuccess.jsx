@@ -17,12 +17,7 @@ export default function CheckoutSuccess() {
     >
       <div className="max-w-[640px] mx-auto">
         <div className="flex justify-center mb-6">
-          <div
-            className="rounded-full border border-gold-border flex items-center justify-center"
-            style={{ width: 80, height: 80 }}
-          >
-            <SolisLogo size={48} />
-          </div>
+          <SolisLogo size={96} />
         </div>
         <h1
           className="font-display font-light text-cream m-0 mb-4"

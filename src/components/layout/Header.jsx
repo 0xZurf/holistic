@@ -50,7 +50,7 @@ export default function Header() {
         padding: '0 clamp(16px, 4vw, 48px)',
       }}
     >
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between h-[72px]">
+      <div className="max-w-[1200px] mx-auto flex items-center justify-between h-[112px]">
         {/* Left links (desktop) */}
         <nav className="hidden md:flex items-center gap-6">
           {leftLinks.map((link) => (
@@ -66,7 +66,7 @@ export default function Header() {
           className="flex flex-col items-center gap-0.5 no-underline"
           aria-label="Solis Imperium home"
         >
-          <SolisLogo size={36} />
+          <SolisLogo size={72} />
           <span className="font-accent uppercase tracking-[0.25em] text-[10px] text-gold">
             Solis Imperium
           </span>
