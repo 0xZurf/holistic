@@ -20,7 +20,7 @@ export default function Newsletter() {
       >
         <FadeIn>
           <div className="flex justify-center">
-            <SolisLogo size={48} />
+            <SolisLogo size={96} />
           </div>
           <h2
             className="font-display font-light text-cream m-0"

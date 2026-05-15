@@ -45,7 +45,7 @@ export default function AdminLayout() {
             </svg>
           </button>
           <div className="flex items-center gap-2">
-            <SolisLogo size={24} />
+            <SolisLogo size={48} />
             <h1 className="font-accent uppercase tracking-[0.2em] text-[12px] text-gold m-0">
               Solis Imperium Admin
             </h1>

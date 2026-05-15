@@ -11,6 +11,28 @@ export default function About() {
         style={{ padding: '80px clamp(16px, 4vw, 48px) 60px' }}
       >
         <SacredGeoBg opacity={0.03} />
+
+        {/* Dragon entering from the right edge */}
+        <img
+          src="/images/solis-dragon.png"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute hidden md:block"
+          style={{
+            top: '50%',
+            right: 0,
+            transform: 'translate(35%, -50%)',
+            width: 'min(70vw, 900px)',
+            height: 'auto',
+            opacity: 0.55,
+            zIndex: 1,
+            maskImage:
+              'linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0) 100%)',
+            WebkitMaskImage:
+              'linear-gradient(to left, rgba(0,0,0,1) 35%, rgba(0,0,0,0.6) 75%, rgba(0,0,0,0) 100%)',
+          }}
+        />
+
         <div className="relative z-10 max-w-[1100px] mx-auto">
           <FadeIn>
             <div className="text-center mb-12">

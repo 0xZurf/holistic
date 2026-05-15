@@ -69,7 +69,20 @@ export default function RetreatSpotlight() {
       className="relative bg-obsidian overflow-hidden"
       style={{ padding: '80px clamp(16px, 4vw, 48px)' }}
     >
-      <SacredGeoBg opacity={0.025} />
+      {/* Gold drips top-to-bottom background */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: 'url(/images/solis-dripps.png)',
+          backgroundSize: 'auto 100%',
+          backgroundRepeat: 'repeat-x',
+          backgroundPosition: 'center top',
+          opacity: 0.18,
+          mixBlendMode: 'screen',
+        }}
+      />
+      <SacredGeoBg opacity={0.02} />
       <div className="max-w-[1200px] mx-auto relative z-10">
         <FadeIn>
           <div className="text-center mb-14">
